@@ -1,0 +1,8 @@
+[
+  {
+    "remote":       "github",
+    "repository":   "HaoZeke/device_sony_common",
+    "target_path":  "device/sony/common",
+    "revision":     "OmniRom-7.0"
+  }
+]
