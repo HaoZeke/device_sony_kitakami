@@ -53,7 +53,12 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 24360501248
 BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
-TARGET_RECOVERY_FSTAB = device/sony/kitakami/rootdir/fstab.kitakami
+#TARGET_RECOVERY_FSTAB = device/sony/kitakami/rootdir/fstab.kitakami
+TARGET_TWRP_FSTAB := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_FSTAB = device/sony/kitakami/rootdir/twrp.fstab
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_THEME := portrait_hdpi
 
 # Wi-Fi definitions for Broadcom solution
 BOARD_WLAN_DEVICE           := bcmdhd
@@ -88,4 +93,8 @@ TARGET_SYSTEM_PROP += device/sony/kitakami/system.prop
 # SELinux
 BOARD_SEPOLICY_DIRS += device/sony/kitakami/sepolicy
 
+# F2FS Support
+# TARGET_USERIMAGES_USE_F2FS := true
+
 include device/sony/common/CommonConfig.mk
+include device/sony/common/twrp.mk
