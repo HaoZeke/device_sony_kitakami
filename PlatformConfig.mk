@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Platform path
+PLATFORM_COMMON_PATH := device/sony/kitakami
 
 TARGET_BOARD_PLATFORM := msm8994
 
@@ -56,9 +58,10 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 #TARGET_RECOVERY_FSTAB = device/sony/kitakami/rootdir/fstab.kitakami
 TARGET_TWRP_FSTAB := true
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FSTAB = device/sony/kitakami/rootdir/twrp.fstab
+TARGET_RECOVERY_FSTAB = $(PLATFORM_COMMON_PATH)/rootdir/twrp.fstab
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_THEME := portrait_hdpi
+
 
 # Wi-Fi definitions for Broadcom solution
 BOARD_WLAN_DEVICE           := bcmdhd
@@ -72,26 +75,26 @@ WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 
 # BT definitions for Broadcom solution
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/kitakami/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_COMMON_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_CUSTOM_BT_CONFIG := device/sony/kitakami/bluetooth/vnd_generic.txt
+BOARD_CUSTOM_BT_CONFIG := $(PLATFORM_COMMON_PATH)/bluetooth/vnd_generic.txt
 
 # RIL
 TARGET_PER_MGR_ENABLED := true
 
-# NFC
-NFC_NXP_CHIP_TYPE := PN547C2
+# NFC PN547C2 = 1
+NXP_CHIP_TYPE := 1
 
 # FM definitions for Broadcom solution
 BOARD_HAVE_ALTERNATE_FM := true
 BOARD_HAVE_BCM_FM := true
 
 # Props for hotplugging
-TARGET_SYSTEM_PROP += device/sony/kitakami/system.prop
+TARGET_SYSTEM_PROP += $(PLATFORM_COMMON_PATH)/system.prop
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/sony/kitakami/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy
 
 # F2FS Support
 # TARGET_USERIMAGES_USE_F2FS := true
